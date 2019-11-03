@@ -94,7 +94,7 @@
                                 
                             </div>
                             <button class="btn btn-success btn-block loginbtn">Connexion</button>
-                            <a class="btn btn-default btn-block" href=<?php echo BASE_URL.DS.'user'.DS.'register';?>>Inscription</a>
+                            <a class="btn btn-default btn-block" href=<?php echo BASE_URL.DS.'customer'.DS.'register';?>>Inscription</a>
                         </form>
                     </div>
                 </div>

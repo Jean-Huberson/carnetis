@@ -1,5 +1,3 @@
-
-
 <!doctype html>
 <html class="no-js" lang="fr">
 
@@ -78,43 +76,43 @@
                 </div>
                 <div class="hpanel">
                     <div class="panel-body">
-                        <form action="#" id="loginForm">
+                        <form action='<?php echo BASE_URL.DS.'customer'.DS.'register';?>' method="POST" id="loginForm">
                             <div class="row">
                                 <div class="form-group col-lg-6">
                                     <label>Nom</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" name="name" class="form-control" required="">
                                 </div>
                                 <div class="form-group col-lg-6">
                                     <label>Prénoms</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" name="firstName" class="form-control" required="">
                                 </div>
                                 <div class="form-group col-lg-6">
                                     <label>Mot de passe</label>
-                                    <input type="password" class="form-control">
+                                    <input type="password" name="password" placeholder="***************" class="form-control" required="">
                                 </div>
                                 <div class="form-group col-lg-6">
                                     <label>Confirm Mot de passe</label>
-                                    <input type="password" class="form-control">
+                                    <input type="password" name="confirmPassword" placeholder="***************" class="form-control" required="">
                                 </div>
                                 <div class="form-group col-lg-6">
                                     <label>Téléphone</label>
-                                    <input type="tel" class="form-control">
+                                    <input type="tel" name="phoneNumber" class="form-control" required="">
                                 </div>
                                 <div class="form-group col-lg-6">
                                     <label>Ville</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" name="city" class="form-control" required="">
                                 </div>
                                 <div class="form-group col-lg-6">
                                     <label>Pays</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" name="country" class="form-control" required="">
                                 </div>
                                 <div class="form-group col-lg-6">
                                     <label>Adresse</label>
-                                    <input type="text" class="form-control">
+                                    <input type="email" name="address" class="form-control" required="">
                                 </div>
                             </div>
                             <div class="text-center">
-                                <button class="btn btn-success registerbtn">S'inscrire</button>
+                                <button class="btn btn-success registerbtn" id="submit">S'inscrire</button>
                                 <a class="btn btn-default" href=<?php echo BASE_URL.DS.'page'.DS.'index';?>>Annuler</a>
                             </div>
                         </form>
@@ -127,12 +125,16 @@
             <div class="col-md-12 text-center"><br/><br/>
             <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> -Tous droits réservés | Carnetis</p>
             </div>
+            <div id="resultat">
+
+            </div>
         </div>
     </div>
 
-    <!-- jquery
-		============================================ -->
+    <!-- jquery =========================================== -->
     <script src=<?php echo BASE_URL.'/js/login-js/js/vendor/jquery-1.11.3.min.js';?>></script>
+
+   
     <!-- bootstrap JS
 		============================================ -->
     <script src=<?php echo BASE_URL.'/js/login-js/js/bootstrap.min.js';?>></script>

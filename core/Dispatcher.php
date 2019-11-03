@@ -1,6 +1,7 @@
 <?php
 class Dispatcher{
     var $_request;
+    var $_message_error = "Desolé la page que vous recherchez n'existe pas!";
 
     function __construct(){
         $this->_request = new Request();
@@ -9,7 +10,7 @@ class Dispatcher{
         $controller = $this->loadController();
         
         if(!in_array($this->_request->action, get_class_methods($controller))){
-            $this->manage_error('Le controller ** '.$this->_request->controller.' ** n\'a pas de page ** '.$this->_request->action.'.php ** qui existe!');
+            $this->manage_error($this->_message_error);
         }
         else{
             call_user_func_array(array($controller, $this->_request->action), $this->_request->params);
@@ -25,6 +26,9 @@ class Dispatcher{
         if(isset($this->_request->controller) && !empty($this->_request->controller)){
             $nameController = ucfirst($this->_request->controller).'Controller';
             $files = ROOT.DS.'controller'.DS.$nameController.'.php';
+            if(!file_exists($files)){
+                $this->manage_error($this->_message_error);
+            }
             require $files;
             return new $nameController($this->_request);
             
@@ -33,11 +37,8 @@ class Dispatcher{
             $nameController = 'PageController';
             $files = ROOT.DS.'controller'.DS.$nameController.'.php';
             require $files;
-            return new $nameController($this->_request);
-            
-        }
-        
-        
+            return new $nameController($this->_request); 
+        }  
     }
 
     /**

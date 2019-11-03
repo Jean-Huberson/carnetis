@@ -9,7 +9,7 @@ class Session{
             $_SESSION += $key;
         }
         else{
-            $_SESSION[$key] = $value;
+            $_SESSION[$key] = $val;
         }
 	 	 
 	 }
@@ -44,13 +44,9 @@ class Session{
 	 	}
 	 }
 
-	 public static function setHeader($header){
-		 return $header;
-	 }
-
 	 public static function checkLogin(){
 	 	if (self::get("login") == true) {
-	 		header("Location:exam.php");
+	 		header(BASE_URL.DS.'page'.DS.'index');
 	 	}
 	 }
 

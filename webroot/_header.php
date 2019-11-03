@@ -68,7 +68,7 @@
                             </ul>
 
                             <!-- Get Tickets Button -->
-                            <a href=<?php echo BASE_URL.DS.'user'.DS.'login';?> class="btn confer-btn mt-3 mt-lg-0 ml-3 ml-lg-5">Connexion <i class="zmdi zmdi-long-arrow-right"></i></a>
+                            <a href=<?php echo BASE_URL.DS.'customer'.DS.'login';?> class="btn confer-btn mt-3 mt-lg-0 ml-3 ml-lg-5">Connexion <i class="zmdi zmdi-long-arrow-right"></i></a>
                         </div>
                         <!-- Nav End -->
                     </div>

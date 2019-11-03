@@ -24,7 +24,7 @@ Class Model{
     }
 
     function createCustomer($request){
-        if(_isNewCustomer($request)){
+        if($this->_isNewCustomer($request)){
             $sql = 'INSERT INTO '.$this->_table.' (
             customers_name,
             customers_firstName,
@@ -36,7 +36,8 @@ Class Model{
             customers_latitude,
             customers_longitude,
             customers_inscriptionDate,
-            customers_address) 
+            customers_address,
+            customers_medias) 
             VALUES(
             :name,
             :firstName,
@@ -48,44 +49,47 @@ Class Model{
             :latitude, 
             :longitude, 
             :inscriptionDate, 
-            :address)';
-    
+            :address,
+            :medias)';
+        
             $insertCustomer = $this->_db->prepare($sql);
-            $insertCustomer->bindValue(':nom', $request->_name);
-            $insertCustomer->bindValue(':firstName', $request->_firstName);
-            $insertCustomer->bindValue(':number', $request->_phoneNumber);
-            $insertCustomer->bindValue(':email', $request->_email);
-            $insertCustomer->bindValue(':password', $request->_password);
-            $insertCustomer->bindValue(':city', $request->_city);
-            $insertCustomer->bindValue(':country', $request->_country);
-            $insertCustomer->bindValue(':latitude', $request->_latitude);
-            $insertCustomer->bindValue(':longitude', $request->_longitude);
-            $insertCustomer->bindValue(':inscriptionDate', $request->_registryDate);
-            $insertCustomer->bindValue(':address', $request->_address);
+            $insertCustomer->bindValue(':name', ucfirst(strtolower($request['name'])));
+            $insertCustomer->bindValue(':firstName', ucfirst(strtolower($request['firstName'])));
+            $insertCustomer->bindValue(':number', $request['phoneNumber']);
+            $insertCustomer->bindValue(':email', $request['address']);
+            $insertCustomer->bindValue(':password', $request['password']);
+            $insertCustomer->bindValue(':city', ucfirst($request['city']));
+            $insertCustomer->bindValue(':country', ucfirst($request['country']));
+            $insertCustomer->bindValue(':latitude', 10000000000000000000);
+            $insertCustomer->bindValue(':longitude', 1000000000000000000);
+            $insertCustomer->bindValue(':inscriptionDate', $request['date']);
+            $insertCustomer->bindValue(':address', $request['address']);
+            $insertCustomer->bindValue(':medias', "null");
             if($insertCustomer->execute()){
                 $session = array(
-                    'nom' => $request->_name,
-                    'firstName' => $request->_firstName,
-                    'number' => $request->_phoneNumber,
-                    'email' => $request->_email,
-                    'password' => $request->_password,
-                    'city' => $request->_city,
-                    'country' => $request->_country
+                    'name' => $request['name'],
+                    'firstName' => $request['firstName'],
+                    'number' => $request['phoneNumber'],
+                    'email' => $request['address'],
+                    'password' => $request['password'],
+                    'city' => $request['city'],
+                    'country' => $request['country']
                 );
                 Session::set('login', $session);
                 Session::checkLogin();
                 $insertCustomer->closeCursor(); 
                 return true;
-            }  
+            }
         }
-        
     }
 
     function _isNewCustomer($request){
-        $sql = "SELECT * FROM " .$this->_table. " WHERE customers_email=:email";
+        $sql = "SELECT * FROM " .$this->_table. " WHERE customers_number =:number || customers_email=:email";
         $statement = $this->_db->prepare($sql);
-        $request->_email = htmlspecialchars(trim($request->_email));
-        $statement->bindValue(":email", $request->_email);
+        $request['address'] = htmlspecialchars(trim($request['address']));
+        $request['phoneNumber'] = htmlspecialchars(trim($request['phoneNumber']));
+        $statement->bindValue(":number", $request['phoneNumber']);
+        $statement->bindValue(":email", $request['address']);
         $statement->execute();
         $verif_customer_exists = $statement->rowCount();
         if($verif_customer_exists == 0){

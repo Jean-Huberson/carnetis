@@ -1,56 +1,53 @@
 <?php
 class Session{
-	 public static function init(){
-	 	session_start();
+
+	 public function __construct(){
+		 if(!isset($_SESSION)){
+			session_start();
+		 }
 	 }
 	 
-	 public static function set($key, $val=null){
-		if(is_array($key)){
-            $_SESSION += $key;
-        }
-        else{
-            $_SESSION[$key] = $val;
-        }
-	 	 
+	 public function setSession($key, $val){
+		$_SESSION[$key] = $val;
 	 }
 
-	 public static function get($key){
-	 	if (isset($_SESSION[$key])) {
+	 public function getSession($key){
+	 	if (isset($_SESSION[$key]) && !empty($_SESSION[$key])) {
 	 		return $_SESSION[$key];
 	 	} else {
 	 		return false;
 	 	}
 	 }
 
-	  public static function checkAdminSession(){
-	 	self::init();
-	 	if (self::get("adminLogin") == false) {
-	 		self::destroy();
-	 		header("Location:login.php");
+	  public function checkAdminSession(){
+	 	$this->init();
+	 	if ($this->getSession($key) == false) {
+	 		$this->destroy();
+	 		header('Location:'.BASE_URL.DS.'page'.DS.'index');
 	 	}
 	 }
 
-	  public static function checkAdminLogin(){
-	 	self::init();
-	 	if (self::get("adminLogin") == true) {
-	 		header("Location:index.php");
+	  public function checkAdminLogin(){
+	 	$this->init();
+	 	if ($this->getSession($key) == true) {
+	 		header('Location:'.BASE_URL.DS.'page'.DS.'index');
 	 	}
 	 }
 
-	 public static function checkSession(){
-	 	if (self::get("login") == false) {
-	 		self::destroy();
-	 		header("Location:index.php");
+	 public function checkSession(){
+	 	if ($this->getSession($key) == false) {
+	 		$this->destroy();
+	 		header('Location:'.BASE_URL.DS.'page'.DS.'index');
 	 	}
 	 }
 
-	 public static function checkLogin(){
-	 	if (self::get("login") == true) {
-	 		header(BASE_URL.DS.'page'.DS.'index');
+	public function checkLogin($key){
+	 	if ($this->getSession($key) == true) {
+	 		header('Location:'.BASE_URL.DS.'page'.DS.'index');
 	 	}
-	 }
+	}
 
-	 public static function destroy(){
+	 public function destroy(){
 	 	session_destroy();
 	 	session_unset();
 	 }

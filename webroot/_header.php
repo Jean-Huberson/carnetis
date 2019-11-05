@@ -11,10 +11,11 @@
     <title>Carnetis</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="./img/core-img/favicon.png">
+    <link rel="icon" href=<?php echo BASE_URL.'/img/core-img/favicon.png';?>>
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href=<?php echo BASE_URL.'/style.css';?> >
+    
 
 </head>
 
@@ -33,7 +34,7 @@
                 <nav class="classy-navbar justify-content-between" id="conferNav">
 
                     <!-- Logo -->
-                    <a class="nav-brand" href="./index.php"><img src=<?php echo BASE_URL.'/img/core-img/logo.png';?>></a>
+                    <a class="nav-brand" href="./index.php"><img src=<?php /*echo BASE_URL.'/img/core-img/logo.png';*/?>></a>
 
                     <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">
@@ -49,22 +50,22 @@
                         <!-- Nav Start -->
                         <div class="classynav">
                             <ul id="nav">
-                                <li class="active"><a href="index.php">Accueil</a></li>
+                                <li class="active"><a href=<?php echo BASE_URL.DS.'page'.DS.'index';?>>Accueil</a></li>
                                 <li><a href="#">Catégories</a>
                                     <ul class="dropdown">
-                                        <li><a href="category.php">Toutes</a></li>
-                                        <li><a href="about.php">About Us</a></li>
+                                        <li><a href=<?php echo BASE_URL.DS.'event'.DS.'category';?>>Toutes</a></li>
+                                        <li><a href=<?php echo BASE_URL.DS.'page'.DS.'about';?>>About Us</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="#">évènements</a>
                                     <ul class="dropdown">
-                                        <li><a href="events.php">Voir tous</a></li>
-                                        <li><a href="#">Créez-en un</a></li>
+                                        <li><a href=<?php echo BASE_URL.DS.'event'.DS.'events';?>>Voir tous</a></li>
+                                        <li><a href=<?php echo BASE_URL.DS.'event'.DS.'event_edit';?>>Créez-en un</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="tickets.php">Réservations</a></li>
+                                <li><a href=<?php echo BASE_URL.DS.'event'.DS.'tickets';?>>Réservations</a></li>
                                 <li><a href="#">FAQ</a></li>
-                                <li><a href="contacts.php">Contacts</a></li>
+                                <li><a href=<?php echo BASE_URL.DS.'page'.DS.'contacts';?>>Contacts</a></li>
                             </ul>
 
                             <!-- Get Tickets Button -->

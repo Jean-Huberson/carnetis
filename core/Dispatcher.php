@@ -48,7 +48,7 @@ class Dispatcher{
         header("HTTP/1.0 404 Not Found");
         $controller = new Controller($this->_request);
         $controller->set("message",$message);
-        $controller->render("/error/error");
+        $controller->render("/error/404");
         die();  
     }
 }

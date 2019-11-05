@@ -1,12 +1,13 @@
 <?php
 class Controller{
-    
+    public $_session;
     public $_request;
     public $_format;
     private $_vars = array();
     private $_isRendered = false;
 
     function __construct($request){
+        $this->_session = new Session();
         $this->_request = $request;
         $this->_request->_data;
         $this->_format = new Format();
@@ -58,11 +59,6 @@ class Controller{
         if(!isset($this->$name)){
             $this->$name = new $name();
         }
-    }
-
-    function callback(){
-        $filePath = ROOT.DS.'view'.DS.'customer'.DS.'validate.php';
-        require $filePath;
     }
 
 }

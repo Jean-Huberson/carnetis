@@ -13,11 +13,24 @@
 		public function validatePassword($password, $confPassword){
 			$password = $this->validateSimpleString($password);
 			$confPassword = $this->validateSimpleString($confPassword);
-			if($password != $confPassword){
+			if(($password != $confPassword)){
 				$this->_message['invalidPassword'] = "Mot de passe non concordant!";
 				return false;
-			}	
+			}else{
+				if(strlen($password) < 4 || strlen($confPassword) < 4){
+				$this->_message['invalidPassword'] = "Mot de passe trop court!";
+				return false;
+				}
+			}
 			return true;
+		}	
+
+		public function validatePasswordLog($password){
+			$password = $this->validateSimpleString($password);
+			//$pattern1 ="#.*^(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$#";
+			//$pattern2 = "#.*^(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).*$#";
+			
+			return $password;
 		}
 
 		public function validateEmail($email){
@@ -52,7 +65,9 @@
 		}
 		
 		public function formatDate(){
-			$date = date('d-M-Y, H:i:s');
+			
+			$date = new DateTime();
+			$date->format('d-m-Y, H:i:s');
 			return $date;
 		}
 	}

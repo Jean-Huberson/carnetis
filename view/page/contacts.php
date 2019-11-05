@@ -6,9 +6,9 @@
     <section class="breadcrumb-area bg-img bg-gradient-overlay jarallax" style="background-image: url(img/bg-img/37.jpg);">
         <div class="container h-100">
             <div class="row h-100 align-items-center">
-                <div class="col-12">
+                <div class="col-12 col-md-12">
                     <div class="breadcrumb-content">
-                        <h2 class="page-title">Contactez-nous</h2>
+                        <h2 class="page-title" style="text-align:center">Contactez-nous</h2>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="index.html">Accueil</a></li>
@@ -26,15 +26,8 @@
     <section class="contact--us-area section-padding-100-0">
         <div class="container">
             <div class="row">
-                <!-- Contact Us Thumb -->
-                <div class="col-12 col-lg-6">
-                    <div class="contact-us-thumb mb-100">
-                        <img src="img/bg-img/44.jpg" alt="">
-                    </div>
-                </div>
-
                 <!-- Contact Form -->
-                <div class="col-12 col-lg-6">
+                <div class="col-12 col-md-12 col-lg-12">
                     <div class="contact_from_area mb-100 clearfix">
                         <!-- Contact Heading -->
                         <div class="contact-heading">

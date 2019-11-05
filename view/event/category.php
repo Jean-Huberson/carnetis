@@ -1,5 +1,5 @@
 <?php
-include_once('_header.php');
+    require(WEBROOT.'/_header.php');
 ?>
 
     <!-- Breadcrumb Area Start -->
@@ -214,7 +214,7 @@ include_once('_header.php');
 
 <!-- Footer Area Start -->
 <?php
-include_once('_footer.php');
+include_once(WEBROOT.'/_footer.php');
 ?>
 <!-- Footer Area End -->
 

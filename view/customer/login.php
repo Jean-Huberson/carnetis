@@ -77,16 +77,21 @@
                 </div>
                 <div class="hpanel">
                     <div class="panel-body">
-                        <form action="#" id="loginForm">
+                        <form action='<?php echo BASE_URL.DS.'customer'.DS.'login';?>' method="POST" id="loginForm">
                             <div class="form-group">
-                                <label class="control-label" for="username">E-mail</label>
-                                <input type="email" placeholder="example@gmail.com" title="Please enter you username" required="" value="" name="username" id="username" class="form-control">
-                               
+                                <label class="control-label" for="email">E-mail</label>
+                                <input type="email" placeholder="example@gmail.com" title="Please enter you username" required="" value="" name="email" id="email" class="form-control">
+                                <?php if(!empty($log_errors)){?>
+                                <span style="color:#FF0000" class="help-block small"><?php echo($log_errors);?></span>
+                                <?php }?>
+                                
                             </div>
                             <div class="form-group">
                                 <label class="control-label" for="password">Mot de passe</label>
                                 <input type="password" title="Please enter your password" placeholder="******" required="" value="" name="password" id="password" class="form-control">
-                                
+                                <?php if(isset($log_erros)){?>
+                                <span style="color:#FF0000" class="help-block small"><?php echo($log_errors);?></span>
+                                <?php }?>
                             </div>
                             <div class="checkbox login-checkbox">
                                 <label>

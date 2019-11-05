@@ -5,4 +5,8 @@ class PageController extends Controller{
         
     }
 
+    function contacts(){
+        
+    }
+
 }

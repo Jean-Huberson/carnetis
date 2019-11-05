@@ -87,6 +87,14 @@
                                     <input type="text" name="firstName" class="form-control" required="">
                                 </div>
                                 <div class="form-group col-lg-6">
+                                    <label>E-mail</label>
+                                    <input type="email" name="email" class="form-control" required="">
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label>Téléphone</label>
+                                    <input type="tel" name="phoneNumber" class="form-control" required="">
+                                </div>
+                                <div class="form-group col-lg-6">
                                     <label>Mot de passe</label>
                                     <input type="password" name="password" placeholder="***************" class="form-control" required="">
                                 </div>
@@ -95,21 +103,13 @@
                                     <input type="password" name="confirmPassword" placeholder="***************" class="form-control" required="">
                                 </div>
                                 <div class="form-group col-lg-6">
-                                    <label>Téléphone</label>
-                                    <input type="tel" name="phoneNumber" class="form-control" required="">
-                                </div>
-                                <div class="form-group col-lg-6">
                                     <label>Ville</label>
                                     <input type="text" name="city" class="form-control" required="">
                                 </div>
                                 <div class="form-group col-lg-6">
                                     <label>Pays</label>
                                     <input type="text" name="country" class="form-control" required="">
-                                </div>
-                                <div class="form-group col-lg-6">
-                                    <label>Adresse</label>
-                                    <input type="email" name="address" class="form-control" required="">
-                                </div>
+                                </div>                              
                             </div>
                             <div class="text-center">
                                 <button class="btn btn-success registerbtn" id="submit">S'inscrire</button>

@@ -96,3 +96,4 @@
 <script src=<?php echo BASE_URL.'/js/confer.bundle.js';?>></script>
 <!-- Active -->
 <script src=<?php echo BASE_URL.'/js/default-assets/active.js';?>></script>
+
